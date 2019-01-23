@@ -8,7 +8,7 @@ set -e
  echo "apt-get update done."
  sudo apt-get install -y python-dev python-pip
  sudo pip install ansible
- sudo timedatectl set-timezone Asia/Kolkata
+#  sudo timedatectl set-timezone Asia/Kolkata
  sudo localectl set-locale LANG=en_US.utf8
  sudo apt-get install git
  sudo git clone https://github.com/subodhonline/TerraformPackerAnsible.git
