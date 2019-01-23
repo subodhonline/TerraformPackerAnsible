@@ -10,6 +10,7 @@ set -e
  sudo pip install ansible
  sudo timedatectl set-timezone Asia/Kolkata
  sudo localectl set-locale LANG=en_US.utf8
- sudo wget "https://s3.amazonaws.com/ansiblepackersubodhbucket/i_playbook.yml"
+ sudo apt-get install git
+ sudo git clone https://github.com/subodhonline/TerraformPackerAnsible.git
  echo "Running Ansible."
- sudo ansible-playbook ./i_playbook.yml
+ sudo ansible-playbook ./TerraformPackerAnsible/ansible/playbook.yml
