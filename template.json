@@ -1,0 +1,27 @@
+{
+	"variables": {
+		"aws_access_key": "AKIAJDQMVMET3PGTNINQ",
+		"aws_secret_key": "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"
+	},
+	"builders": [{
+		"type": "amazon-ebs",
+		"access_key": "{{user `aws_access_key`}}",
+		"secret_key": "{{user `aws_secret_key`}}",
+		"region": "us-east-1",
+		"source_ami": "ami-0ac019f4fcb7cb7e6",
+		"instance_type": "t2.micro",
+		"ssh_username": "ubuntu",
+		"ami_name": "MiddleTier-{{isotime | clean_ami_name}}",
+     	"ami_description": "EC2 AMI Debian 9.1", 
+		"tags": {
+			"role": "web_Server"
+		 },
+		"run_tags": {
+			"role": "production_Web"
+		 }
+	}],
+	"provisioners": [{
+		"type": "shell",
+		"script": "provision.sh"
+	}]
+}
