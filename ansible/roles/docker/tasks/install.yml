@@ -2,10 +2,10 @@
 #Uninstall older viersion if present
 - name: Ensure old versions of Docker are not installed.
   package:
-    name:
-      - docker
-      - docker-engine
-    state: absent
+   name:
+    - docker
+    - docker-engine
+  state: absent
 
 # sudo apt-get install *
 - name: Install docker packages
