@@ -2,9 +2,3 @@
 # defaults file for docker
 docker_group: docker
 remote_user: ubuntu
-
-packages:
-  - apt-transport-https
-  - ca-certificates
-  - curl
-  - software-properties-common
