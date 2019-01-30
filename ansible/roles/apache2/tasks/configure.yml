@@ -12,18 +12,12 @@
    path: "{{apache_conf_path}}/{{apache_port_conf_file}}"
    regexp: "^Listen {{http_port}}"
    replace: "Listen 8081"
-   notify:
-    - restart apache2
-   become: True
 
 - name: apache2 virtualhost on port 8081
   replace: 
    path: "{{apache_conf_path}}/sites-available/{{apache_default_vhost_filename}}"
-   regexp: "^<VirtualHost \*:{{http_port}}>" 
+   regexp: "^<VirtualHost \\*:{{http_port}}>" 
    replace: "<VirtualHost *:8081>"
-  notify:
-   - restart apache2
-  become: True
 
 - name: create virtual host file
   template: 
