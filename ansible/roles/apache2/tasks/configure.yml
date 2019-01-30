@@ -1,0 +1,44 @@
+---
+- name: Enable mod_rewrite
+  apache2_module: 
+   name: rewrite
+   state: present
+  notify:
+  - restart apache2
+  become: True
+  
+- name: apache2 listen on port 8081
+  replace: 
+   path: "{{apache_conf_path}}/{{apache_port_conf_file}}"
+   regexp: "^Listen {{http_port}}"
+   replace: "Listen 8081"
+   notify:
+    - restart apache2
+   become: True
+
+- name: apache2 virtualhost on port 8081
+  replace: 
+   path: "{{apache_conf_path}}/sites-available/{{apache_default_vhost_filename}}"
+   regexp: "^<VirtualHost \*:{{http_port}}>" 
+   replace: "<VirtualHost *:8081>"
+  notify:
+   - restart apache2
+  become: True
+
+- name: create virtual host file
+  template: 
+   src: "{{ apache_vhosts_template }}"
+   dest: "{{ apache_conf_path }}/sites-available/{{ domain }}.conf"
+
+- name: Copy index.html
+  copy: 
+   src: "{{ index_html }}"
+   dest: "{{html_path}}/{{ index_html }}"
+
+#Enable the Virtual Host
+- name: a2ensite {{ domain }}
+  command: a2ensite {{ domain }}
+  args:
+   creates: "{{apache_conf_path}}/sites-enabled/{{ domain }}.conf"
+  notify:
+   - restart apache2

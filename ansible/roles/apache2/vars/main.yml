@@ -1,0 +1,14 @@
+---
+# vars file for apache2
+http_port: 80
+domain: "example.com"
+apache_vhosts_filename: "vhosts.conf"
+apache_vhosts_template: "vhosts.conf.j2"
+apache_conf_path: "/etc/apache2"
+apache_port_conf_file: "ports.conf"
+apache_default_vhost_filename: "000-default.conf"
+apache_restart_state: "restarted"
+apache_service: "apache2"
+index_html: "index.html"
+html_path: "/var/www/html"
+

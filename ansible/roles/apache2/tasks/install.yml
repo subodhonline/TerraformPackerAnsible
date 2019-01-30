@@ -1,0 +1,5 @@
+---
+# Installing apache2
+- name: Install apache2
+  apt: name=apache2 update_cache=yes state=latest
+  become: True
