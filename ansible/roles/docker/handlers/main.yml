@@ -1,2 +1,6 @@
 ---
 # handlers file for docker
+- name: Start docker on boot
+  service: 
+    name: "{{docker_service}}" 
+    state: "{{docker_restart_state}}"
