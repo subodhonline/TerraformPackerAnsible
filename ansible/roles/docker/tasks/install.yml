@@ -9,13 +9,13 @@
 
 # sudo apt-get install *
 - name: Install docker packages
-    apt:
-      name: "{{ packages }}"
-      state: present
-      update_cache: yes
-    vars:
-      packages:
-        - apt-transport-https
-        - ca-certificates
-        - curl
-        - software-properties-common
+  apt:
+    name: "{{ packages }}"
+    state: present
+    update_cache: yes
+  vars:
+    packages:
+      - apt-transport-https
+      - ca-certificates
+      - curl
+      - software-properties-common
