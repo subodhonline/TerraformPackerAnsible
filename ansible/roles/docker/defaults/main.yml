@@ -1,7 +1,6 @@
 ---
 # defaults file for docker
 docker_group: "docker"
-remote_user: "docker"
-docker_service: "docker"
+docker_user: "docker"
 docker_service: "docker"
 docker_restart_state: "restarted"
