@@ -2,6 +2,6 @@
 - hosts: localhost
   connection: local
   roles:
-   # - role: apache2
+   - role: apache2
    - role: docker
   become: yes
