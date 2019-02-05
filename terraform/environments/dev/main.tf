@@ -19,3 +19,17 @@ module "public_subnet" {
   aws_availability_zone                             = ["us-east-1a", "us-east-1b"]
   vpc_id                                            = "${module.vpc.vpc_id}"
 }
+
+module "private_subnet" {
+  source                                            = "../../modules/private_subnet"
+  environment                                       = "${var.environment}"
+  private_subnet_cidr                               = "${var.private_subnet_cidr}"
+  aws_availability_zone                             = ["us-east-1a", "us-east-1b"]
+  vpc_id                                            = "${module.vpc.vpc_id}"
+}
+
+module "internet_gateway" {
+  source                                            = "../../modules/internet_gateway"
+  environment                                       = "${var.environment}"
+  vpc_id                                            = "${module.vpc.vpc_id}"
+}

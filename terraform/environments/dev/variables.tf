@@ -28,6 +28,11 @@ variable "public_subnet_cidr" {
     default = "172.31.1.0/24"
 }
 
+variable "private_subnet_cidr" {
+    description = "CIDR for the Private Subnet"
+    default = "172.31.2.0/24"
+}
+
 variable "aws_availability_zone"{
     description = "EC2 availability zone for the subnet"
     default = ["us-east-1a", "us-east-1b"]
