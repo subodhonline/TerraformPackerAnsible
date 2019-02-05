@@ -11,3 +11,11 @@ module "vpc" {
   enable_dns_hostnames                              = "${var.enable_dns_hostnames}"
   enable_dns_support                                = "${var.enable_dns_support}"
 }
+
+module "public_subnet" {
+  source                                            = "../../modules/public_subnet"
+  environment                                       = "${var.environment}"
+  public_subnet_cidr                                = "${var.public_subnet_cidr}"
+  aws_availability_zone                             = ["us-east-1a", "us-east-1b"]
+  vpc_id                                            = "${module.vpc.vpc_id}"
+}
