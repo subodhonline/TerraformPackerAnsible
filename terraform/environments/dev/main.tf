@@ -67,3 +67,14 @@ module "route_table_association" {
   main_route_table_id                               = "${module.vpc.main_route_table_id}"
   private_route_table_ids                           = "${module.private_subnet_route_table.private_route_table_ids}"
 }
+
+module "aws_instance" {
+  source                                            = "../../modules/aws_instance"
+  subnet_id                                         = "${module.public_subnet.public_subnet_id}"
+  environment                                       = "${var.environment}"
+  instance_type                                     = "${var.instance_type}"
+  availability_zone                                 = "${var.availability_zone}"
+  key_name                                          = "${var.key_name}"
+  vpc_security_group_ids                            = "${var.vpc_security_group_ids}"
+  ami                                               = "${var.ami}"
+}

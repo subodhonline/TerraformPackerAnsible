@@ -42,3 +42,24 @@ variable "allow_all_ip" {
     description = "CIDR for the all ip allowed"
     default = "0.0.0.0/0"
 }
+
+
+variable "instance_type" {
+    default = "t2.micro"
+}
+
+variable "availability_zone" {
+    default = "us-east-1a"
+}
+
+variable "key_name" {
+    default = "devopsnew"
+}
+
+variable "vpc_security_group_ids" {
+    default = ["sg-002ce36821c4b3bcb"]
+}
+
+variable "ami" {
+    default = "ami-077251f971bebe3de"
+}
