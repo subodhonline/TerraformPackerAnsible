@@ -33,3 +33,10 @@ module "internet_gateway" {
   environment                                       = "${var.environment}"
   vpc_id                                            = "${module.vpc.vpc_id}"
 }
+
+module "internet_access" {
+  source                                            = "../../modules/internet_access"
+  main_route_table_id                               = "${module.vpc.main_route_table_id}"
+  allow_all_ip                                      = "${var.allow_all_ip}"
+  internet_gateway_id                               = "${module.internet_gateway.internet_gateway_id}"
+}

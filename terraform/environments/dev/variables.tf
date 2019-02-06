@@ -37,3 +37,8 @@ variable "aws_availability_zone"{
     description = "EC2 availability zone for the subnet"
     default = ["us-east-1a", "us-east-1b"]
 }
+
+variable "allow_all_ip" {
+    description = "CIDR for the all ip allowed"
+    default = "0.0.0.0/0"
+}
