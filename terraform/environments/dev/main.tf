@@ -16,7 +16,7 @@ module "public_subnet" {
   source                                            = "../../modules/public_subnet"
   environment                                       = "${var.environment}"
   public_subnet_cidr                                = "${var.public_subnet_cidr}"
-  aws_availability_zone                             = ["us-east-1a", "us-east-1b"]
+  aws_availability_zone                             = ["us-east-1a"]
   vpc_id                                            = "${module.vpc.vpc_id}"
 }
 
@@ -24,7 +24,7 @@ module "private_subnet" {
   source                                            = "../../modules/private_subnet"
   environment                                       = "${var.environment}"
   private_subnet_cidr                               = "${var.private_subnet_cidr}"  
-  aws_availability_zone                             = ["us-east-1a", "us-east-1b"]
+  aws_availability_zone                             = ["us-east-1a"]
   vpc_id                                            = "${module.vpc.vpc_id}"
 }
 
@@ -57,7 +57,7 @@ module "private_subnet_route_table" {
   environment                                       = "${var.environment}"
   vpc_id                                            = "${module.vpc.vpc_id}"
   allow_all_ip                                      = "${var.allow_all_ip}"
-  natgw_id                                          = "${aws_nat_gateway.nat.*.id}"
+  natgw_id                                          = "${aws_nat_gateway.nat.id}"
 }
 
 module "route_table_association" {
